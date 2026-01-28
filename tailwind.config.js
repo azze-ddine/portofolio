@@ -1,18 +1,15 @@
-module.exports = {
-  darkMode: "class",
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: 'class',
   content: [
-    "./app/**/*.{js,jsx}",
-    "./components/**/*.{js,jsx}",
+    // This is the "magic" line for your specific setup
+    "./java-fullstack-portfolio/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        bgDark: "#0B0F19",
-        cardDark: "#11162A",
-        accent: "#4FD1C5",
-        accentSoft: "#4FD1C520",
-      },
-    },
+    extend: {},
   },
   plugins: [],
-};
+}
