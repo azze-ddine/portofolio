@@ -1,5 +1,5 @@
 import SectionHeader from "../ui/SectionHeader";
-import { Cpu, Cloud, Monitor } from 'lucide-react'; // Example icons
+import { Cpu, Cloud, Monitor, Brain, Brackets, Database, Braces, GitBranch } from 'lucide-react'; // Example icons
 
 export default function SkillsSection({ data }) {
   return (
@@ -13,9 +13,13 @@ export default function SkillsSection({ data }) {
         {data.map((category) => (
               <div key={category.title} className="bg-white dark:bg-slate-900/50 p-8 rounded-3xl shadow-sm border border-slate-50 dark:border-slate-800">            <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-cyan-50 rounded-2xl text-cyan-500">
-                {category.icon === "Brain" && <Cpu size={24} />}
+                {category.icon === "Brain" && <Brain size={24} />}
                 {category.icon === "Cloud" && <Cloud size={24} />}
                 {category.icon === "Monitor" && <Monitor size={24} />}
+                {category.icon === "Braces" && <Braces size={24} />}
+                {category.icon === "Database" && <Database size={24} />}
+                {category.icon === "GitBranch" && <GitBranch size={24} />}
+                
               </div>
               <h3 className="font-bold text-xl">{category.title}</h3>
             </div>

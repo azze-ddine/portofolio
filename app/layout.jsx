@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
 export default function RootLayout({ children }) {
   return (
@@ -7,9 +8,10 @@ export default function RootLayout({ children }) {
       {/* Removed bg-transparent and dark:bg-slate-900 */}
       <body className="antialiased"> 
         <Navbar />
-        <div className="pt-20"> 
+        <div className="flex-1"> 
           {children}
         </div>
+         <Footer />
       </body>
     </html>
   );

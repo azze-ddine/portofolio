@@ -2,7 +2,7 @@ export const skills = [
   {
     title: "AI & Machine Learning",
     icon: "Brain", // You can use strings or Lucide components
-    skills: ["AI Agents", "LLM Integration", "Prompt Engineering", "ML Models"]
+    skills: ["AI Agents", "LLM Integration", "Prompt Engineering"]
   },
   {
     title: "Cloud & DevOps",
@@ -12,21 +12,21 @@ export const skills = [
   {
     title: "Frontend Development",
     icon: "Monitor",
-    skills: ["React.js", "TypeScript", "Next.js", "Angular", "Tailwind CSS"]
+    skills: ["Angular", "Vue.js", "TypeScript", "Html/Css", "Tailwind CSS"]
   },
   {
     title: "Backend Development",
-    icon: "Server",
-    skills: ["Java", "Spring Boot", "Node.js", "Python", "REST APIs"]
-  },
-  {
-    title: "Mobile Development",
-    icon: "Smartphone",
-    skills: ["React Native", "Flutter", "iOS (Swift)", "Android (Kotlin)"]
+    icon: "Braces",
+    skills: ["Java", "Spring Boot", "Jee", "Php", "REST APIs"]
   },
   {
     title: "Database & Data Engineering",
     icon: "Database",
-    skills: ["SQL", "NoSQL", "MongoDB", "PostgreSQL", "Redis"]
+    skills: ["SQL", "NoSQL", "MongoDB", "PostgreSQL", "Firebase"]
+  },
+  {
+    title: "Developement Practicies & Tools",
+    icon: "GitBranch",
+    skills: ["Agile/Scrum", "Git", "GitHub/GitLab", "Testing", "Swagger"]
   }
 ];
