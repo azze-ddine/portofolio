@@ -1,10 +1,13 @@
 "use client";
-import { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Moon, Sun, Menu, X, Globe, ChevronDown } from 'lucide-react';
 
 export default function Navbar() {
   const [isDark, setIsDark] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // State for mobile menu
+  const [isOpen, setIsOpen] = useState(false);
+  const [lang, setLang] = useState('Anglais');
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const langRef = useRef(null);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -13,6 +16,14 @@ export default function Navbar() {
       setIsDark(true);
       document.documentElement.classList.add('dark');
     }
+
+    const handleClickOutside = (event) => {
+      if (langRef.current && !langRef.current.contains(event.target)) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const toggleTheme = () => {
@@ -50,6 +61,35 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Language Selector */}
+          <div className="relative" ref={langRef}>
+            <button 
+              onClick={() => setIsLangOpen(!isLangOpen)}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all text-[13px] font-semibold"
+            >
+              <Globe size={16} className="text-cyan-500" />
+              <span>{lang}</span>
+              <ChevronDown size={14} className={`transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {isLangOpen && (
+              <div className="absolute top-full right-0 mt-2 w-32 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl overflow-hidden py-1">
+                <button 
+                  onClick={() => { setLang('Anglais'); setIsLangOpen(false); }}
+                  className="w-full text-left px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-cyan-50 dark:hover:bg-cyan-950 hover:text-cyan-600 transition-colors"
+                >
+                  Anglais
+                </button>
+                <button 
+                  onClick={() => { setLang('Français'); setIsLangOpen(false); }}
+                  className="w-full text-left px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-cyan-50 dark:hover:bg-cyan-950 hover:text-cyan-600 transition-colors"
+                >
+                  Français
+                </button>
+              </div>
+            )}
+          </div>
+
           <button onClick={toggleTheme} className="p-2 rounded-full border border-slate-200 dark:border-slate-800 text-cyan-500 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all">
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
           </button>

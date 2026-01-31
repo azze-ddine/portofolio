@@ -81,7 +81,7 @@ export default function ContactSection() {
             </p>
             <div className="aspect-video rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-lg group">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106371.74515512762!2d-7.6693945!3d33.5722678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4778a113a1%3A0x10cb5517300c14c5!2sCasablanca!5e0!3m2!1sen!2sma!4v1700000000000!5m2!1sen!2sma" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106371.74515512762!2d-7.6693945!3d33.5722678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4778a113a1%3A0x10cb5517300c14c5!2sRabat!5e0!3m2!1sen!2sma!4v1700000000000!5m2!1sen!2sma" 
                 width="100%" 
                 height="100%" 
                 allowFullScreen="" 
