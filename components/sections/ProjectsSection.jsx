@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react'; // Added useState
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
@@ -7,19 +7,37 @@ import SectionHeader from "../ui/SectionHeader";
 import { projects } from "@/data/projects";
 
 export default function ProjectsSection() {
+  // 1. Initialize state
+  const [showAll, setShowAll] = useState(false);
+
+  // 2. Logic to filter displayed projects
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
-    <section id="projects" className="py-20 dark:bg-transparent">
+    <section id="projects" className="py-24">
       <SectionHeader 
         badge="Projects" 
         title="Featured Projects" 
         subtitle="A selection of my recent projects, showcasing my technical expertise and problem-solving abilities"
       />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {displayedProjects.map((project, index) => (
           <ProjectCard key={index} project={project} />
         ))}
       </div>
+
+      {/* 3. Show More / Show Less Button */}
+      {projects.length > 3 && (
+        <div className="flex justify-center">
+          <button 
+            onClick={() => setShowAll(!showAll)}
+            className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-10 py-3 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm active:scale-95"
+          >
+            {showAll ? "Show less" : "Show more"}
+          </button>
+        </div>
+      )}
     </section>
   );
 }
@@ -49,7 +67,6 @@ function ProjectCard({ project }) {
       onMouseEnter={() => autoplay.current.play()}
       onMouseLeave={() => autoplay.current.stop()}
     >
-      {/* Container: aspect-video (16:9) matches the screenshots better than 1.4/1 */}
       <div className="relative aspect-video w-full overflow-hidden" ref={emblaRef}>
         <div className="flex h-full w-full">
           {project.image.map((img, idx) => (
@@ -63,7 +80,6 @@ function ProjectCard({ project }) {
           ))}
         </div>
 
-        {/* Carousel Arrows - Matches the circular grey style in capture */}
         <div className="absolute inset-0 flex items-center justify-between px-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
           <button 
             onClick={scrollPrev} 
@@ -80,7 +96,6 @@ function ProjectCard({ project }) {
         </div>
       </div>
 
-      {/* Content Area - Reduced padding to p-5 to match the compact capture look */}
       <div className="p-5 flex flex-col flex-grow">
         <h3 className="font-bold text-lg mb-2 text-slate-900 dark:text-white leading-tight transition-colors group-hover:text-cyan-600">
           {project.title}
@@ -90,7 +105,6 @@ function ProjectCard({ project }) {
           {project.description}
         </p>
 
-        {/* Tags - Rounded-lg and subtle background */}
         <div className="flex flex-wrap gap-2 mb-5">
           {project.technologies?.map((tech) => (
             <span key={tech} className="px-3 py-1 bg-slate-100/80 dark:bg-slate-800 rounded-lg text-[11px] font-semibold text-slate-600 dark:text-slate-300">
@@ -99,7 +113,6 @@ function ProjectCard({ project }) {
           ))}
         </div>
 
-        {/* View Details Button - Perfectly matching the light-blue bar at bottom */}
         <div className="mt-auto pt-2">
           <a 
             href={project.link} 
