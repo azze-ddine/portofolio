@@ -30,12 +30,12 @@ export default function HeroSection() {
               Full-Stack Developer
             </span>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight bg-clip-text bg-gradient-to-r from-primary to-primary-dark">
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">
               Azzeddine Saf
             </h1>
             <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
-               Software Engineer crafting smart, secure, and high-performance
-               applications. From full-stack development to reactive programming, and modern UI development providing strong and scalable solutions.
+               Software Engineer focused on building secure, high-performance applications through full-stack development, 
+               reactive programming, and modern UI design, delivering reliable and scalable solutions.
             </p>
 
             {/* CTA Buttons */}

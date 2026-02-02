@@ -1,13 +1,22 @@
 export default function SectionHeader({ badge, title, subtitle }) {
   return (
     <div className="flex flex-col items-center text-center mb-16 px-4">
-      <span className="bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 px-4 py-1 rounded-full text-sm font-semibold mb-4 border border-cyan-200 dark:border-cyan-800">
+      {/* Added transition-colors to make the theme switch smooth */}
+      <span className="bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 px-4 py-1 rounded-full text-sm font-semibold mb-4 border border-cyan-200 dark:border-cyan-800 transition-colors duration-300">
         {badge}
       </span>
-      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+      
+      {/* Ensure title is bright white in dark mode */}
+      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors duration-300">
         {title}
       </h2>
-      {subtitle && <p className="text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">{subtitle}</p>}
+      
+      {/* Switched neutral to slate to match your Navbar/Background palette better */}
+      {subtitle && (
+        <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto transition-colors duration-300">
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }

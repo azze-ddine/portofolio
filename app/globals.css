@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* This maps Tailwind's 'bg-background' utility to your CSS variable */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
@@ -12,21 +11,25 @@
     --foreground: #1e293b;
   }
 
-  /* No !important needed here anymore */
   .dark {
-    --background: #0f172a;
+    --background: #020617; /* Slightly deeper dark for better contrast */
     --foreground: #f8fafc;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
-    @apply transition-colors duration-300 min-h-screen;
+    @apply transition-colors duration-300 min-h-screen antialiased;
+  }
+
+  /* This ensures H1, H2, H3 automatically switch to white in dark mode */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-slate-900 dark:text-white transition-colors duration-300;
   }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-sm;
+    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-sm;
   }
 }
