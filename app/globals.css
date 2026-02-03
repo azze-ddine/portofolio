@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
-
 @layer base {
   :root {
     --background: #f0f9ff;
@@ -12,24 +7,23 @@
   }
 
   .dark {
-    --background: #020617; /* Slightly deeper dark for better contrast */
+    --background: #020617;
     --foreground: #f8fafc;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
-    @apply transition-colors duration-300 min-h-screen antialiased;
-  }
-
-  /* This ensures H1, H2, H3 automatically switch to white in dark mode */
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-slate-900 dark:text-white transition-colors duration-300;
+    /* Avoid @apply here if it causes build errors; use standard CSS */
+    transition-property: color, background-color;
+    transition-duration: 300ms;
+    min-height: 100vh;
   }
 }
 
 @layer components {
   .glass-card {
+    /* If @apply still fails, use standard CSS variables or check tailwind config */
     @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-sm;
   }
 }

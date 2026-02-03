@@ -28,7 +28,7 @@ export default function Home() {
       
       {/* Refactored Education wrapper: removed bg-white/40 */}
       <div className="relative py-24 -mx-6 lg:-mx-12">
-        <div className="absolute inset-0 bg-slate-50/50 dark:bg-slate-800/20 pointer-events-none transition-colors duration-300"></div>
+        <div className="absolute inset-0 dark:bg-slate-800/20 pointer-events-none transition-colors duration-300"></div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
            <EducationSection data={education} />
         </div>

@@ -1,8 +1,11 @@
 import SectionHeader from "../ui/SectionHeader";
 export default function EducationSection({ data }) {
   return (
-    <section id="education" className="py-20">
-      <SectionHeader badge="Education" title="Educational Background" />
+    <section id="education" className="py-24 scroll-mt-24">
+      <SectionHeader 
+      badge="Education"
+      title="Educational Background"
+      subtitle="My academic journey in computer science and software engineering" />
       <div className="relative max-w-4xl mx-auto">
         <div className="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-slate-200"></div>
         {data.map((edu, index) => (

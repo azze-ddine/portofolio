@@ -15,7 +15,7 @@ export default function NewsSection({ data }) {
   };
 
   return (
-    <section id="news" className="py-24">
+    <section id="news" className="py-24 scroll-mt-24">
       <SectionHeader 
         badge="News" 
         title="Latest updates" 

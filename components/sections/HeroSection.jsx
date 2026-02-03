@@ -30,7 +30,7 @@ export default function HeroSection() {
               Full-Stack Developer
             </span>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               Azzeddine Saf
             </h1>
             <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">

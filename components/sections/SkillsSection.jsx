@@ -23,7 +23,7 @@ export default function SkillsSection({ data }) {
         {displayedSkills.map((category) => (
           <div 
             key={category.title} 
-            className="bg-white dark:bg-slate-900/50 p-8 rounded-3xl shadow-sm border border-slate-50 dark:border-slate-800 flex flex-col h-full hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300"
+            className="bg-white dark:bg-neutral-900 p-8 rounded-3xl shadow-sm border border-slate-50 flex flex-col h-full hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300"
           >            
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-cyan-50 dark:bg-cyan-900/20 rounded-2xl text-cyan-500">
