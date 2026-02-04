@@ -2,7 +2,7 @@ export default function SectionHeader({ badge, title, subtitle }) {
   return (
     <div className="flex flex-col items-center text-center mb-16 px-4">
       {/* Added transition-colors to make the theme switch smooth */}
-      <span className="bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 px-4 py-1 rounded-full text-sm font-semibold mb-4 border border-cyan-200 dark:border-cyan-800 transition-colors duration-300">
+      <span className="text-cyan-500 inline-block px-4 py-1.5 mb-6 rounded-full bg-cyan-500/10 font-bold text-sm uppercase tracking-widest">
         {badge}
       </span>
       

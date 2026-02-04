@@ -7,6 +7,39 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
     transition-duration: 150ms !important; 
   }
+    /* Change the old .dark .bg-white rule to this more careful version */
+  .dark .bg-white:not(span) {
+      background-color: #0f172a !important; 
+      border-color: #1e293b !important;
+  }
+
+  /* Specifically style the small skill tags for dark mode */
+  .dark span.bg-white, 
+  .dark .bg-white.text-xs {
+      background-color: rgba(30, 41, 59, 0.5) !important; /* slate-800/50 */
+      color: #2c5175 !important;
+      border: 1px solid rgba(51, 65, 85, 0.5) !important;
+  }
+  html {
+    /* This tells the browser to use dark scrollbars automatically */
+    color-scheme: light dark;
+  }
+
+  /* Optional: Custom styled scrollbar for a more professional look */
+   ::-webkit-scrollbar {
+    width: 10px;
+  }
+   ::-webkit-scrollbar-track {
+    background: #020617; /* slate-950 */
+  }
+   ::-webkit-scrollbar-thumb {
+    background: #1e293b; /* slate-800 */
+    border-radius: 5px;
+    border: 2px solid #020617;
+  }
+   ::-webkit-scrollbar-thumb:hover {
+    background: #334155; /* slate-700 */
+  }
   
   .preload * {
     transition: none !important;

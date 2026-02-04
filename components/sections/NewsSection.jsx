@@ -31,7 +31,7 @@ export default function NewsSection({ data }) {
               {/* FRONT SIDE */}
               <div className="absolute inset-0 h-full w-full bg-white dark:bg-slate-900/50 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 flex flex-col [backface-visibility:hidden] shadow-sm">
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-slate-400 dark:text-slate-500 text-sm font-medium">
+                  <span className="text-cyan-500 inline-block px-4 py-1.5 mb-6 rounded-full bg-cyan-500/10 font-bold text-sm uppercase tracking-widest">
                     {item.date}
                   </span>
                   {/* The Flip Button - matching date font */}

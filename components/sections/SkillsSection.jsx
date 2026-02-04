@@ -26,7 +26,7 @@ export default function SkillsSection({ data }) {
             className="bg-white dark:bg-neutral-900 p-8 rounded-3xl shadow-sm border border-slate-50 flex flex-col h-full hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300"
           >            
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-cyan-50 dark:bg-cyan-900/20 rounded-2xl text-cyan-500">
+              <div className="p-3 bg-gradient-to-br dark:bg-cyan-900/20 rounded-2xl text-cyan-500">
                 {category.icon === "Brain" && <Brain size={24} />}
                 {category.icon === "Cloud" && <Cloud size={24} />}
                 {category.icon === "Monitor" && <Monitor size={24} />}
@@ -43,7 +43,7 @@ export default function SkillsSection({ data }) {
               {category.skills.map(skill => (
                 <span 
                   key={skill} 
-                  className="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-lg text-sm border border-slate-100 dark:border-slate-700 font-medium"
+                  className="bg-cyan-50 dark:bg-cyan-900/20 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-lg text-sm border border-slate-100 dark:border-slate-700 font-medium"
                 >
                   {skill}
                 </span>
@@ -58,7 +58,7 @@ export default function SkillsSection({ data }) {
         <div className="flex justify-center">
           <button 
             onClick={() => setShowAll(!showAll)}
-            className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-10 py-3 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm active:scale-95"
+            className="bg-cyan-50 dark:bg-cyan-900/20 border border-slate-200 dark:border-slate-700 px-10 py-3 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm active:scale-95"
           >
             {showAll ? "Show less" : "Show more"}
           </button>
