@@ -59,7 +59,8 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-slate-950/90 border-b border-slate-200 dark:border-slate-800">
+    <nav className="sticky top-0 z-50 transition-colors duration-300 bg-white dark:bg-slate-950 
+    border-b border-slate-200 dark:border-slate-800 backdrop-blur-md">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
         <div className="font-bold text-xl tracking-tight text-slate-900 dark:text-white transition-colors">
           Azzeddine SAF<span className="text-cyan-500">.</span>
@@ -123,7 +124,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 w-full bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 p-6 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top duration-300">
+        <div className="md:hidden absolute top-16 left-0 w-full bg-white/95 dark:bg-slate-950/95 border-t border-slate-200 dark:border-slate-800 flex flex-col items-center gap-4 py-4 backdrop-blur-md">
           {navLinks.map((link) => (
             <a 
               key={link.name} 

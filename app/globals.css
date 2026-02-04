@@ -1,29 +1,46 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
-    --background: #f0f9ff;
-    --foreground: #1e293b;
+  /* This is the master sync: forced timing for every animatable property */
+  *, ::before, ::after {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition-duration: 150ms !important; 
+  }
+  
+  .preload * {
+    transition: none !important;
   }
 
-  .dark {
-    --background: #020617;
-    --foreground: #f8fafc;
+  /* FORCED OVERRIDES */
+  .dark body {
+    background-color: #020617 !important;
+    color: #f8fafc !important;
   }
 
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    /* Avoid @apply here if it causes build errors; use standard CSS */
-    transition-property: color, background-color;
-    transition-duration: 300ms;
-    min-height: 100vh;
+  .dark h2, .dark h3 {
+    color: #ffffff !important;
   }
-}
 
-@layer components {
-  .glass-card {
-    /* If @apply still fails, use standard CSS variables or check tailwind config */
-    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-sm;
+  .dark .bg-white {
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
+  }
+  
+  .dark .text-slate-700, .dark .text-slate-900 {
+    color: #cbd5e1 !important;
+  }
+
+  /* Sync Navbar and Dropdowns */
+  .dark nav, 
+  .dark nav div[class*="absolute"], 
+  .dark nav div[class*="md:hidden"] {
+    background-color: #020617 !important;
+    color: #f8fafc !important;
+    border-color: #1e293b !important;
+  } 
+
+  .dark nav a, .dark nav button {
+    color: #cbd5e1 !important;
   }
 }
