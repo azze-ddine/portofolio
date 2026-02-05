@@ -43,7 +43,7 @@ export default function SkillsSection({ data }) {
               {category.skills.map(skill => (
                 <span 
                   key={skill} 
-                  className="bg-cyan-50 dark:bg-cyan-900/20 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-lg text-sm border border-slate-100 dark:border-slate-700 font-medium"
+                  className="bg-white dark:bg-slate-400/20 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-lg text-sm border border-slate-100 dark:border-slate-700 font-medium"
                 >
                   {skill}
                 </span>

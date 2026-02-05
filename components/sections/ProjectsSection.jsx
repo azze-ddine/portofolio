@@ -107,7 +107,7 @@ function ProjectCard({ project }) {
 
         <div className="flex flex-wrap gap-2 mb-5">
           {project.technologies?.map((tech) => (
-            <span key={tech} className="px-3 py-1 bg-slate-100/80 dark:bg-slate-800 rounded-lg text-[11px] font-semibold text-slate-600 dark:text-slate-300">
+            <span key={tech} className="px-3 py-1 bg-white dark:bg-slate-400/20 rounded-lg text-[11px] font-semibold text-slate-600 dark:text-slate-300">
               {tech}
             </span>
           ))}
