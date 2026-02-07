@@ -116,7 +116,7 @@ function ProjectCard({ project }) {
         <div className="mt-auto pt-2">
           <a 
             href={project.link} 
-            className="w-full py-2.5 px-4 rounded-xl bg-cyan-50/60 dark:bg-cyan-900/20 group/btn flex items-center justify-between text-cyan-600 dark:text-cyan-400 font-bold text-sm transition-all hover:bg-cyan-100"
+            className="w-full py-2.5 px-4 rounded-xl bg-white-400/20 dark:bg-cyan-900/20 group/btn flex items-center justify-between text-cyan-600 dark:text-cyan-400 font-bold text-sm transition-all hover:bg-cyan-100"
           >
             View Details
             <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />

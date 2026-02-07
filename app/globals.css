@@ -11,6 +11,9 @@
     --sb-track: #020617;
     --sb-thumb: #1e293b;
   }
+  .animate-tilt {
+    animation: tilt 10s infinite linear;
+  }
   /* This is the master sync: forced timing for every animatable property */
   *, ::before, ::after {
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
@@ -28,9 +31,23 @@
   .dark span.bg-white, 
   .dark .bg-white.text-xs {
       background-color: rgba(30, 41, 59, 0.5) !important; /* slate-800/50 */
-      color: #2c5175 !important;
+      color: #e9f0f7 !important;
       border: 1px solid rgba(194, 214, 255, 0.5) !important;
   }
+  .animate-typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 4px solid #06b6d4;
+  /* - typewriter: 3.5s (The name appears)
+     - blink: 0.8s (Repeats until the end)
+     - hideCursor: 3.5s (Kills the cursor at the exact same time typing ends)
+  */
+  animation: 
+    typewriter 3.5s steps(25, end) forwards,
+    blink 0.8s step-end 4, /* Blink 4 times (~3.2s) then stop */
+    hideCursor 3.5s forwards;
+}
   html {
     /* This tells the browser to use dark scrollbars automatically */
     color-scheme: light dark;
@@ -89,4 +106,25 @@
   .dark nav a, .dark nav button {
     color: #cbd5e1 !important;
   }
+}
+@keyframes tilt {
+  0%, 50%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  75% { transform: rotate(-1deg); }
+}
+/* --- Refined Typewriter & Cursor --- */
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 65%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* This animation forces the cursor to disappear at the 3.5s mark */
+@keyframes hideCursor {
+  0%, 99% { border-right-color: #06b6d4; } /* cyan-500 */
+  100% { border-right-color: transparent; }
 }
