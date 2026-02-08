@@ -116,7 +116,7 @@
 
 @keyframes typewriter {
   from { width: 0; }
-  to { width: 65%; }
+  to { width: 56%; }
 }
 
 @keyframes blink {

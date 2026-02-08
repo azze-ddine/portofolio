@@ -16,7 +16,7 @@ export const news = [
     image: "/projects/news/cloud.jpeg"
   },
   {
-    date: "4 jui 2024",
+    date: "4 jui. 2024",
     title: "Orange Digital Center: Successful Completion of Angular Formation Internship at Orange",
     excerpt: "Successfully completed a 3-day intensive internship at ODC Maroc, learning and implementing Angular-based web applications...",
     link: "https://www.facebook.com/ODCMaroc/posts/loccasion-de-devenir-un-expert-en-angular-est-l%C3%A0-transformez-vos-comp%C3%A9tences-en-/868764428614007/",

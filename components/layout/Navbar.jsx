@@ -106,7 +106,7 @@ export default function Navbar() {
           {/* Theme Toggle Button */}
           <button 
             onClick={toggleTheme} 
-            className="p-2 rounded-full border border-slate-200 dark:border-slate-800 text-cyan-500 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all active:scale-90"
+            className="p-1.5 rounded-full border border-slate-200 dark:border-slate-800 text-cyan-500 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all active:scale-90"
             aria-label="Toggle Theme"
           >
             {isDark ? <Sun size={20} /> : <Moon size={20} />}

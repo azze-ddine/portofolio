@@ -50,7 +50,7 @@ export default function HeroSection() {
 
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight flex items-center justify-center md:justify-start">
                   <span className="relative overflow-hidden whitespace-nowrap border-r-4 border-cyan-500 pr-2 animate-typewriter">
-                    Azzeddine SAF.
+                    Azzeddine SAF<span className="text-cyan-500">.</span>
                   </span>
             </h1>
             

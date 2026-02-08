@@ -49,7 +49,7 @@ export default function NewsSection({ data }) {
                 <p className="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-grow leading-relaxed line-clamp-4">
                   {item.excerpt}
                 </p>
-                <a href={item.link} className="text-cyan-500 font-bold flex items-center gap-2 hover:underline group">
+                <a href={item.link} className="w-full py-2.5 px-4 rounded-xl bg-white-400/20 dark:bg-cyan-900/20 group/btn flex items-center justify-between text-cyan-600 dark:text-cyan-400 font-bold text-sm transition-all hover:bg-cyan-100">
                   Read more <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
@@ -77,13 +77,15 @@ export default function NewsSection({ data }) {
           </div>
         ))}
       </div>
-
       <div className="flex justify-center">
         <button 
           onClick={() => setShowAll(!showAll)}
-          className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-10 py-3 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm active:scale-95"
-        >
-          {showAll ? "Show less" : "Show more"}
+          className="group flex items-center gap-3 px-10 py-3.5 rounded-2xl font-bold transition-all active:scale-95border shadow-sm
+            bg-white text-slate-600 border-slate-200 hover:bg-slate-50 hover:border-cyan-500 hover:text-cyan-600
+            dark:bg-slate-900/40 dark:text-slate-300 dark:border-slate-800 dark:hover:border-cyan-500/50 dark:hover:text-cyan-400">
+          <span>{showAll ? "Show less" : "Show more"}</span>
+             <div className={`transition-transform duration-500 ${showAll ? 'rotate-180' : 'group-hover:translate-y-1'}`}>
+            <ArrowRight className={`w-5 h-5 ${showAll ? 'text-cyan-500' : 'text-slate-400'}`} /></div>
         </button>
       </div>
     </section>
