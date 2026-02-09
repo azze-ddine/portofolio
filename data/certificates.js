@@ -68,7 +68,7 @@ export const certificates = [
     title: "Java SE 17 Developer Professional",
     issuer: "Oracle",
     description: "Certified in Java SE 17 development and best practices.",
-    image: "/projects/certifs/java.png"
+    image: "/projects/certifs/OCP 17.png"
   },
   {
     year: "2026",

@@ -80,12 +80,8 @@ export default function NewsSection({ data }) {
       <div className="flex justify-center">
         <button 
           onClick={() => setShowAll(!showAll)}
-          className="group flex items-center gap-3 px-10 py-3.5 rounded-2xl font-bold transition-all active:scale-95border shadow-sm
-            bg-white text-slate-600 border-slate-200 hover:bg-slate-50 hover:border-cyan-500 hover:text-cyan-600
-            dark:bg-slate-900/40 dark:text-slate-300 dark:border-slate-800 dark:hover:border-cyan-500/50 dark:hover:text-cyan-400">
-          <span>{showAll ? "Show less" : "Show more"}</span>
-             <div className={`transition-transform duration-500 ${showAll ? 'rotate-180' : 'group-hover:translate-y-1'}`}>
-            <ArrowRight className={`w-5 h-5 ${showAll ? 'text-cyan-500' : 'text-slate-400'}`} /></div>
+              className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-10 py-3 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm active:scale-95">
+              {showAll ? "Show less" : "Show more"}
         </button>
       </div>
     </section>
