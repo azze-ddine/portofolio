@@ -14,7 +14,7 @@ export const projects = [
     link: "https://github.com/azze-ddine/PFE"
   },
   {
-    title: "RENTALCAR — Car Rental System",
+    title: "RENTALCAR — Managemet & Booking Car Rental System",
     description: "An application that allows users to browse available cars, make reservations, and manage their rental information.",
     image: [
       "/projects/rental/R1.png",

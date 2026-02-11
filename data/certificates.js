@@ -8,6 +8,13 @@ export const certificates = [
     image: "/projects/certifs/scrum.png"
   },
   {
+    year: "2026",
+    title: "Java SE 17 Developer Professional",
+    issuer: "Oracle",
+    description: "Certified in Java SE 17 development and best practices.",
+    image: "/projects/certifs/OCP 17.png"
+  },
+  {
     year: "2024",
     title: "CCNA - Cisco Certified Network Associate",
     issuer: "Cisco",
@@ -62,13 +69,6 @@ export const certificates = [
     issuer: "Oracle",
     description: "Certified in Oracle Cloud Infrastructure Multicloud Architect implementation and optimization.",
     image: "/projects/certifs/multicloud.png"
-  },
-  {
-    year: "2026",
-    title: "Java SE 17 Developer Professional",
-    issuer: "Oracle",
-    description: "Certified in Java SE 17 development and best practices.",
-    image: "/projects/certifs/OCP 17.png"
   },
   {
     year: "2026",
