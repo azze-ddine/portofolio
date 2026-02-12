@@ -63,7 +63,8 @@ export default function NewsSection({ data }) {
       
       <div className="grid md:grid-cols-3 gap-6 mb-12">
         {visibleNews.map((item, index) => (
-          <div key={index} className="h-[380px] [perspective:1000px]">
+          /* key uses Anglais string to avoid [object Object] error */
+          <div key={item.title.Anglais} className="h-[380px] [perspective:1000px]">
             <div className={`relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] ${flippedCard === index ? '[transform:rotateY(180deg)]' : ''}`}>
               
               {/* FRONT SIDE */}
@@ -81,12 +82,17 @@ export default function NewsSection({ data }) {
                 </div>
 
                 <h3 className="font-bold text-xl mb-4 text-slate-900 dark:text-white leading-tight">
-                  {item.title}
+                  {item.title[lang]}
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-grow leading-relaxed line-clamp-4">
-                  {item.excerpt}
+                  {item.excerpt[lang]}
                 </p>
-                <a href={item.link} className="w-full py-2.5 px-4 rounded-xl bg-slate-50 dark:bg-cyan-900/20 group/btn flex items-center justify-between text-cyan-600 dark:text-cyan-400 font-bold text-sm transition-all hover:bg-cyan-500 hover:text-white">
+                <a 
+                  href={item.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-full py-2.5 px-4 rounded-xl bg-slate-50 dark:bg-cyan-900/20 group/btn flex items-center justify-between text-cyan-600 dark:text-cyan-400 font-bold text-sm transition-all hover:bg-cyan-500 hover:text-white"
+                >
                   {t.readMore} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
@@ -95,7 +101,7 @@ export default function NewsSection({ data }) {
               <div className="absolute inset-0 h-full w-full rounded-[2rem] bg-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-hidden border border-slate-100 dark:border-slate-800 shadow-xl">
                 <img 
                   src={item.image} 
-                  alt={item.title} 
+                  alt={item.title[lang]} 
                   className="w-full h-full object-cover opacity-90" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent flex flex-col justify-end p-8">
@@ -105,7 +111,7 @@ export default function NewsSection({ data }) {
                   >
                     {t.back} <RotateCw size={14} />
                   </button>
-                  <p className="text-white font-bold text-lg leading-tight">{item.title}</p>
+                  <p className="text-white font-bold text-lg leading-tight">{item.title[lang]}</p>
                   <p className="text-cyan-400 text-[10px] font-bold mt-2 uppercase tracking-widest">{t.event}</p>
                 </div>
               </div>

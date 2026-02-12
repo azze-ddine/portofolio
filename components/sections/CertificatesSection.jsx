@@ -40,6 +40,7 @@ export default function CertificatesSection({ data }) {
   }, []);
 
   const t = translations[lang];
+  // Logic to show only 3 or all certificates
   const displayedCerts = showAll ? data : data.slice(0, 3);
 
   return (
@@ -51,8 +52,10 @@ export default function CertificatesSection({ data }) {
       />
       
       <div className="grid md:grid-cols-3 gap-6 mb-12">
-        {displayedCerts.map((cert, index) => (
-          <div key={index} className="group h-[320px] [perspective:1000px]">
+        {displayedCerts.map((cert) => (
+          /* key uses the English title string to ensure uniqueness and prevent Object errors */
+          <div key={cert.title.Anglais} className="group h-[320px] [perspective:1000px]">
+            
             {/* Inner Flipper */}
             <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
               
@@ -68,7 +71,7 @@ export default function CertificatesSection({ data }) {
                 </div>
                 
                 <h3 className="font-bold text-xl text-slate-900 dark:text-white leading-tight mb-2">
-                  {cert.title}
+                  {cert.title[lang]}
                 </h3>
                 
                 <p className="text-cyan-500 dark:text-cyan-400 text-xs font-bold uppercase tracking-wider mb-4">
@@ -76,7 +79,7 @@ export default function CertificatesSection({ data }) {
                 </p>
                 
                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
-                  {cert.description}
+                  {cert.description[lang]}
                 </p>
               </div>
 
@@ -84,11 +87,11 @@ export default function CertificatesSection({ data }) {
               <div className="absolute inset-0 h-full w-full rounded-3xl bg-white dark:bg-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-hidden border border-slate-100 dark:border-slate-800 shadow-xl">
                 <img 
                   src={cert.image} 
-                  alt={cert.title} 
+                  alt={cert.title[lang]} 
                   className="w-full h-full object-cover" 
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900/90 to-transparent">
-                  <p className="text-white text-xs font-bold">{cert.title}</p>
+                  <p className="text-white text-xs font-bold">{cert.title[lang]}</p>
                 </div>
               </div>
 
@@ -97,7 +100,7 @@ export default function CertificatesSection({ data }) {
         ))}
       </div>
 
-      {/* Unified Pagination Button */}
+      {/* Pagination Button */}
       {data.length > 3 && (
         <div className="mt-12 flex justify-center">
           <button 

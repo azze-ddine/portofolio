@@ -54,8 +54,14 @@ export default function ProjectsSection() {
       />
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {displayedProjects.map((project, index) => (
-          <ProjectCard key={index} project={project} viewDetailsText={t.viewDetails} />
+        {displayedProjects.map((project) => (
+          /* Using Anglais title as a unique key string */
+          <ProjectCard 
+            key={project.title.Anglais} 
+            project={project} 
+            viewDetailsText={t.viewDetails} 
+            lang={lang} 
+          />
         ))}
       </div>
 
@@ -78,7 +84,7 @@ export default function ProjectsSection() {
   );
 }
 
-function ProjectCard({ project, viewDetailsText }) {
+function ProjectCard({ project, viewDetailsText, lang }) {
   const autoplay = useRef(
     Autoplay({ delay: 3000, stopOnInteraction: false, playOnInit: false })
   );
@@ -109,7 +115,7 @@ function ProjectCard({ project, viewDetailsText }) {
             <div className="relative flex-[0_0_100%] min-w-0 h-full w-full" key={idx}>
               <img 
                 src={img} 
-                alt={project.title} 
+                alt={project.title[lang]} 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
               />
             </div>
@@ -134,11 +140,11 @@ function ProjectCard({ project, viewDetailsText }) {
 
       <div className="p-5 flex flex-col flex-grow">
         <h3 className="font-bold text-lg mb-2 text-slate-900 dark:text-white leading-tight transition-colors group-hover:text-cyan-600">
-          {project.title}
+          {project.title[lang]}
         </h3>
         
         <p className="text-slate-500 dark:text-slate-400 text-[13px] leading-relaxed mb-4 line-clamp-3">
-          {project.description}
+          {project.description[lang]}
         </p>
 
         <div className="flex flex-wrap gap-2 mb-5">
@@ -152,6 +158,8 @@ function ProjectCard({ project, viewDetailsText }) {
         <div className="mt-auto pt-2">
           <a 
             href={project.link} 
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full py-2.5 px-4 rounded-xl bg-slate-50 dark:bg-cyan-900/20 group/btn flex items-center justify-between text-cyan-600 dark:text-cyan-400 font-bold text-sm transition-all hover:bg-cyan-500 hover:text-white"
           >
             {viewDetailsText}

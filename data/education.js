@@ -1,27 +1,57 @@
 export const education = [
   {
     year: "2014",
-    degree: "Baccalauréat - Science",
-    major: "Life & Earth Sciences"
+    degree: {
+      Anglais: "Baccalauréat - Science",
+      Français: "Baccalauréat Scientifique"
+    },
+    major: {
+      Anglais: "Life & Earth Sciences",
+      Français: "Sciences de la Vie et de la Terre (SVT)"
+    }
   },
   {
     year: "2020",
-    degree: "IT Development Specialist",
-    major: "MIAGE Institution of Rabat, Morocco"
+    degree: {
+      Anglais: "IT Development Specialist",
+      Français: "Technicien Spécialisé en Développement Informatique"
+    },
+    major: {
+      Anglais: "MIAGE Institution of Rabat, Morocco",
+      Français: "Institut MIAGE de Rabat, Maroc"
+    }
   },
   {
     year: "2021",
-    degree: "Bachelor - Software and Computer Systems Engineering",
-    major: "National School of Applied Sciences of Kenitra, Morocco"
+    degree: {
+      Anglais: "Bachelor - Software and Computer Systems Engineering",
+      Français: "Licence - Génie Logiciel et Systèmes Informatiques"
+    },
+    major: {
+      Anglais: "National School of Applied Sciences of Kenitra, Morocco",
+      Français: "École Nationale des Sciences Appliquées (ENSA) de Kénitra, Maroc"
+    }
   },
   {
     year: "2024",
-    degree: "Bachelor - English Studies",
-    major: "University of kenitra, Morocco"
+    degree: {
+      Anglais: "Bachelor - English Studies",
+      Français: "Licence - Études Anglaises"
+    },
+    major: {
+      Anglais: "University of Kenitra, Morocco",
+      Français: "Université de Kénitra, Maroc"
+    }
   },
   {
     year: "2026",
-    degree: "Software Engineering Master's Degree",
-    major: "SupMTI Higher Institute of Rabat, Morocco"
+    degree: {
+      Anglais: "Software Engineering Master's Degree",
+      Français: "Master en Ingénierie Logicielle"
+    },
+    major: {
+      Anglais: "SupMTI Higher Institute of Rabat, Morocco",
+      Français: "Institut Supérieur SupMTI de Rabat, Maroc"
+    }
   }
 ];
