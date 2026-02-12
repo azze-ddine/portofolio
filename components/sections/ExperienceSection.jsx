@@ -1,24 +1,53 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SectionHeader from "../ui/SectionHeader";
-import { Briefcase, MapPin } from 'lucide-react';
+import { Briefcase, MapPin, ArrowDown } from 'lucide-react';
 
 export default function ExperienceSection({ data }) {
-  // 1. Initialize state
   const [showAll, setShowAll] = useState(false);
+  const [lang, setLang] = useState('Anglais');
 
-  // 2. Logic to filter displayed experiences (showing 2 by default for the 2-col grid)
+  const translations = {
+    Anglais: {
+      badge: "Experience",
+      title: "Professional Experience",
+      subtitle: "Hands-on experience across multiple companies, building real-world solutions",
+      showMore: "Show More",
+      showLess: "Show Less"
+    },
+    Français: {
+      badge: "Expérience",
+      title: "Expérience Professionnelle",
+      subtitle: "Expérience concrète au sein de diverses entreprises, créant des solutions réelles",
+      showMore: "Voir Plus",
+      showLess: "Voir Moins"
+    }
+  };
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setLang(localStorage.getItem("language") || 'Anglais');
+    };
+    handleStorageChange();
+    window.addEventListener('storage', handleStorageChange);
+    const interval = setInterval(handleStorageChange, 500);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      clearInterval(interval);
+    };
+  }, []);
+
+  const t = translations[lang];
   const displayedExp = showAll ? data : data.slice(0, 2);
 
   return (
     <section id="experience" className="py-24">
       <SectionHeader 
-        badge="Experience" 
-        title="Professional Experience" 
-        subtitle="Hands-on experience across multiple companies, building real-world solutions"
+        badge={t.badge} 
+        title={t.title} 
+        subtitle={t.subtitle}
       />
       
-      {/* 3. Mapping over displayedExp */}
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         {displayedExp.map((exp, idx) => (
           <div key={idx} className="glass-card p-8 rounded-[2rem] relative hover:translate-y-[-4px] transition-all duration-300 bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl">
@@ -49,14 +78,18 @@ export default function ExperienceSection({ data }) {
         ))}
       </div>
 
-      {/* 4. Show More / Show Less Button */}
       {data.length > 2 && (
-        <div className="flex justify-center">
+        <div className="mt-12 flex justify-center">
           <button 
             onClick={() => setShowAll(!showAll)}
-            className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-10 py-3 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm active:scale-95"
+            className="group flex items-center gap-3 px-10 py-3.5 rounded-2xl font-bold transition-all active:scale-95 border shadow-sm
+            bg-white text-slate-600 border-slate-200 hover:bg-slate-50 hover:border-cyan-500 hover:text-cyan-600
+            dark:bg-slate-900/40 dark:text-slate-300 dark:border-slate-800 dark:hover:border-cyan-500/50 dark:hover:text-cyan-400"
           >
-            {showAll ? "Show less" : "Show more"}
+            <span>{showAll ? t.showLess : t.showMore}</span>
+            <div className={`transition-transform duration-500 ${showAll ? 'rotate-180' : 'group-hover:translate-y-1'}`}>
+              <ArrowDown className={`w-5 h-5 ${showAll ? 'text-slate-400' : 'text-cyan-500'}`} />
+            </div>
           </button>
         </div>
       )}

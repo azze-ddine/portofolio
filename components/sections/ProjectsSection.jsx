@@ -1,40 +1,76 @@
 "use client";
-import React, { useCallback, useRef, useState } from 'react'; // Added useState
+import React, { useCallback, useRef, useState, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, ArrowDown } from 'lucide-react';
 import SectionHeader from "../ui/SectionHeader";
 import { projects } from "@/data/projects";
 
 export default function ProjectsSection() {
-  // 1. Initialize state
   const [showAll, setShowAll] = useState(false);
+  const [lang, setLang] = useState('Anglais');
 
-  // 2. Logic to filter displayed projects
+  const translations = {
+    Anglais: {
+      badge: "Projects",
+      title: "Featured Projects",
+      subtitle: "A selection of my recent projects, showcasing my technical expertise and problem-solving abilities",
+      showMore: "Show More",
+      showLess: "Show Less",
+      viewDetails: "View Details"
+    },
+    Français: {
+      badge: "Projets",
+      title: "Projets En Vedette",
+      subtitle: "Une sélection de mes projets récents, illustrant mon expertise technique et ma capacité à résoudre des problèmes",
+      showMore: "Voir Plus",
+      showLess: "Voir Moins",
+      viewDetails: "Voir Détails"
+    }
+  };
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setLang(localStorage.getItem("language") || 'Anglais');
+    };
+    handleStorageChange();
+    window.addEventListener('storage', handleStorageChange);
+    const interval = setInterval(handleStorageChange, 500);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      clearInterval(interval);
+    };
+  }, []);
+
+  const t = translations[lang];
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
     <section id="projects" className="py-24">
       <SectionHeader 
-        badge="Projects" 
-        title="Featured Projects" 
-        subtitle="A selection of my recent projects, showcasing my technical expertise and problem-solving abilities"
+        badge={t.badge} 
+        title={t.title} 
+        subtitle={t.subtitle}
       />
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {displayedProjects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+          <ProjectCard key={index} project={project} viewDetailsText={t.viewDetails} />
         ))}
       </div>
 
-      {/* 3. Show More / Show Less Button */}
       {projects.length > 3 && (
-        <div className="flex justify-center">
+        <div className="mt-12 flex justify-center">
           <button 
             onClick={() => setShowAll(!showAll)}
-            className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-10 py-3 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm active:scale-95"
+            className="group flex items-center gap-3 px-10 py-3.5 rounded-2xl font-bold transition-all active:scale-95 border shadow-sm
+            bg-white text-slate-600 border-slate-200 hover:bg-slate-50 hover:border-cyan-500 hover:text-cyan-600
+            dark:bg-slate-900/40 dark:text-slate-300 dark:border-slate-800 dark:hover:border-cyan-500/50 dark:hover:text-cyan-400"
           >
-            {showAll ? "Show less" : "Show more"}
+            <span>{showAll ? t.showLess : t.showMore}</span>
+            <div className={`transition-transform duration-500 ${showAll ? 'rotate-180' : 'group-hover:translate-y-1'}`}>
+              <ArrowDown className={`w-5 h-5 ${showAll ? 'text-slate-400' : 'text-cyan-500'}`} />
+            </div>
           </button>
         </div>
       )}
@@ -42,7 +78,7 @@ export default function ProjectsSection() {
   );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, viewDetailsText }) {
   const autoplay = useRef(
     Autoplay({ delay: 3000, stopOnInteraction: false, playOnInit: false })
   );
@@ -116,9 +152,9 @@ function ProjectCard({ project }) {
         <div className="mt-auto pt-2">
           <a 
             href={project.link} 
-            className="w-full py-2.5 px-4 rounded-xl bg-white-400/20 dark:bg-cyan-900/20 group/btn flex items-center justify-between text-cyan-600 dark:text-cyan-400 font-bold text-sm transition-all hover:bg-cyan-100"
+            className="w-full py-2.5 px-4 rounded-xl bg-slate-50 dark:bg-cyan-900/20 group/btn flex items-center justify-between text-cyan-600 dark:text-cyan-400 font-bold text-sm transition-all hover:bg-cyan-500 hover:text-white"
           >
-            View Details
+            {viewDetailsText}
             <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
           </a>
         </div>

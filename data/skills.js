@@ -1,31 +1,50 @@
 export const skills = [
   {
-    title: "Backend Development",
+    // Object containing both versions
+    title: {
+      Anglais: "Backend Development",
+      Français: "Développement Backend"
+    },
     icon: "Braces",
     skills: ["Java", "Spring Boot", "Jee", "Php", "REST APIs"]
   },
   {
-    title: "Frontend Development",
+    title: {
+      Anglais: "Frontend Development",
+      Français: "Développement Frontend"
+    },
     icon: "Monitor",
     skills: ["Angular", "Vue.js", "TypeScript", "Html/Css", "Tailwind CSS"]
   },
   {
-    title: "Developement Practicies & Tools",
+    title: {
+      Anglais: "Development Practices & Tools",
+      Français: "Pratiques et Outils de Développement"
+    },
     icon: "GitBranch",
     skills: ["Agile/Scrum", "Git", "GitHub/GitLab", "Testing", "Swagger"]
   },
   {
-    title: "AI & Machine Learning",
-    icon: "Brain", // You can use strings or Lucide components
+    title: {
+      Anglais: "AI & Machine Learning",
+      Français: "IA et Machine Learning"
+    },
+    icon: "Brain",
     skills: ["AI Agents", "LLM Integration", "Prompt Engineering"]
   },
   {
-    title: "Cloud & DevOps",
+    title: {
+      Anglais: "Cloud & DevOps",
+      Français: "Cloud et DevOps"
+    },
     icon: "Cloud",
     skills: ["AWS", "Azure", "Docker", "CI/CD", "Microservices"]
   },
   {
-    title: "Database & Data Engineering",
+    title: {
+      Anglais: "Database & Data Engineering",
+      Français: "Bases de données et Data"
+    },
     icon: "Database",
     skills: ["SQL", "NoSQL", "MongoDB", "PostgreSQL", "Firebase"]
   }

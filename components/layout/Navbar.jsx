@@ -5,17 +5,42 @@ import { Moon, Sun, Menu, X, Globe, ChevronDown } from 'lucide-react';
 export default function Navbar() {
   const [isDark, setIsDark] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [lang, setLang] = useState('Anglais');
+  const [lang, setLang] = useState('Anglais'); // 'Anglais' or 'Français'
   const [isLangOpen, setIsLangOpen] = useState(false);
   const langRef = useRef(null);
 
+  // 1. Translation Dictionary
+  const translations = {
+    Anglais: {
+      home: 'Home',
+      skills: 'Skills',
+      projects: 'Projects',
+      experience: 'Experience',
+      education: 'Education',
+      news: 'News',
+      certificates: 'Certificates',
+      contact: 'Contact',
+    },
+    Français: {
+      home: 'Accueil',
+      skills: 'Compétences',
+      projects: 'Projets',
+      experience: 'Expérience',
+      education: 'Éducation',
+      news: 'Actualités',
+      certificates: 'Certificats',
+      contact: 'Contact',
+    }
+  };
+
   useEffect(() => {
-    // 1. Precise Theme Initialization
+    // Precise Theme Initialization
     const savedTheme = localStorage.getItem("theme");
+    const savedLang = localStorage.getItem("language");
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
+    // Init Theme
     const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-    
     setIsDark(shouldBeDark);
     if (shouldBeDark) {
       document.documentElement.classList.add('dark');
@@ -23,7 +48,10 @@ export default function Navbar() {
       document.documentElement.classList.remove('dark');
     }
 
-    // 2. Click Outside Logic
+    // Init Language
+    if (savedLang) setLang(savedLang);
+
+    // Click Outside Logic
     const handleClickOutside = (event) => {
       if (langRef.current && !langRef.current.contains(event.target)) {
         setIsLangOpen(false);
@@ -36,8 +64,6 @@ export default function Navbar() {
   const toggleTheme = () => {
     const newDark = !isDark;
     setIsDark(newDark);
-    
-    // Toggle the class on the root element
     if (newDark) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -47,31 +73,36 @@ export default function Navbar() {
     }
   };
 
+  const handleLangChange = (newLang) => {
+    setLang(newLang);
+    localStorage.setItem("language", newLang);
+    setIsLangOpen(false);
+  };
+
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Education', href: '#education' },
-    { name: 'News', href: '#news' },
-    { name: 'Certificates', href: '#certificates' },
-    { name: 'Contact', href: '#contact' },
+    { id: 'home', href: '#' },
+    { id: 'skills', href: '#skills' },
+    { id: 'projects', href: '#projects' },
+    { id: 'experience', href: '#experience' },
+    { id: 'education', href: '#education' },
+    { id: 'news', href: '#news' },
+    { id: 'certificates', href: '#certificates' },
+    { id: 'contact', href: '#contact' },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 transition-colors duration-300 bg-white dark:bg-slate-950 
-    border-b border-slate-200 dark:border-slate-800 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 backdrop-blur-md">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
-        <div className="font-bold text-xl tracking-tight text-slate-900 dark:text-white transition-colors">
+        <div className="font-bold text-xl tracking-tight text-slate-900 dark:text-white">
           Azzeddine SAF<span className="text-cyan-500">.</span>
         </div>
         
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} 
+            <a key={link.id} href={link.href} 
                className="text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors text-sm font-medium">
-              {link.name}
+              {translations[lang][link.id]}
             </a>
           ))}
         </div>
@@ -89,11 +120,11 @@ export default function Navbar() {
             </button>
 
             {isLangOpen && (
-              <div className="absolute top-full right-0 mt-2 w-32 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl overflow-hidden py-1 animate-in fade-in zoom-in duration-200">
+              <div className="absolute top-full right-0 mt-2 w-32 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl overflow-hidden py-1">
                 {['Anglais', 'Français'].map((language) => (
                   <button 
                     key={language}
-                    onClick={() => { setLang(language); setIsLangOpen(false); }}
+                    onClick={() => handleLangChange(language)}
                     className="w-full text-left px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-cyan-50 dark:hover:bg-cyan-950 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
                   >
                     {language}
@@ -106,7 +137,7 @@ export default function Navbar() {
           {/* Theme Toggle Button */}
           <button 
             onClick={toggleTheme} 
-            className="p-1.5 rounded-full border border-slate-200 dark:border-slate-800 text-cyan-500 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all active:scale-90"
+            className="p-1.5 rounded-full border border-slate-200 dark:border-slate-800 text-cyan-500 hover:bg-slate-100 dark:hover:bg-slate-900 active:scale-90"
             aria-label="Toggle Theme"
           >
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -115,7 +146,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setIsOpen(!isOpen)} 
-            className="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors"
+            className="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -127,12 +158,12 @@ export default function Navbar() {
         <div className="md:hidden absolute top-16 left-0 w-full bg-white/95 dark:bg-slate-950/95 border-t border-slate-200 dark:border-slate-800 flex flex-col items-center gap-4 py-4 backdrop-blur-md">
           {navLinks.map((link) => (
             <a 
-              key={link.name} 
+              key={link.id} 
               href={link.href} 
               onClick={() => setIsOpen(false)} 
-              className="text-lg font-medium text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 border-b border-slate-50 dark:border-slate-900 pb-2 transition-colors"
+              className="text-lg font-medium text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 border-b border-slate-50 dark:border-slate-900 pb-2"
             >
-              {link.name}
+              {translations[lang][link.id]}
             </a>
           ))}
         </div>
