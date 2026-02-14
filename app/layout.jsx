@@ -5,6 +5,7 @@ import Footer from "../components/layout/Footer";
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <link rel="icon" href="https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/developer_mode_tv/default/48px.svg" type="image/svg+xml"></link>
       {/* Removed bg-transparent and dark:bg-slate-900 */}
       <body className="antialiased"> 
         <Navbar />
