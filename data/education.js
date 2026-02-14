@@ -46,8 +46,8 @@ export const education = [
   {
     year: "2026",
     degree: {
-      Anglais: "Software Engineering Master's Degree",
-      Français: "Master en Ingénierie Logicielle"
+      Anglais: "Software Engineer Degree",
+      Français: " diplôme d'ingénieur en Ingénierie des Systèmes d'Information"
     },
     major: {
       Anglais: "SupMTI Higher Institute of Rabat, Morocco",

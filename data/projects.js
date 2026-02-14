@@ -21,7 +21,7 @@ export const projects = [
   {
     title: {
       Anglais: "RENTALCAR — Management & Booking Car Rental System",
-      Français: "RENTALCAR — Système de Gestion et Réservation de Location"
+      Français: "RENTALCAR — Système de Gestion et Réservation de Location de Voitures"
     },
     description: {
       Anglais: "An application that allows users to browse available cars, make reservations, and manage their rental information.",
@@ -77,7 +77,7 @@ export const projects = [
   {
     title: {
       Anglais: "Q-A CHATBOT — AI-Powered Question Answering Chatbot",
-      Français: "Q-A CHATBOT — Chatbot de Questions-Réponses IA"
+      Français: "Q-R CHATBOT — Chatbot de Questions-Réponses IA"
     },
     description: {
       Anglais: "A simple AI-powered chatbot that answers questions based on a predefined knowledge base.",
