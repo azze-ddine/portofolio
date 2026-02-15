@@ -6,6 +6,8 @@ import { Award, ArrowDown } from 'lucide-react';
 export default function CertificatesSection({ data }) {
   const [showAll, setShowAll] = useState(false);
   const [lang, setLang] = useState('Anglais');
+  // New state to track the active flipped card on mobile
+  const [flippedId, setFlippedId] = useState(null);
 
   const translations = {
     Anglais: {
@@ -40,8 +42,12 @@ export default function CertificatesSection({ data }) {
   }, []);
 
   const t = translations[lang];
-  // Logic to show only 3 or all certificates
   const displayedCerts = showAll ? data : data.slice(0, 3);
+
+  // Toggle flip on mobile
+  const handleCardClick = (id) => {
+    setFlippedId(flippedId === id ? null : id);
+  };
 
   return (
     <section id="certificates" className="py-24">
@@ -51,13 +57,18 @@ export default function CertificatesSection({ data }) {
         subtitle={t.subtitle}
       />
       
-      <div className="grid md:grid-cols-3 gap-6 mb-12">
+      <div className="grid md:grid-cols-3 gap-6 mb-12 px-4 md:px-0">
         {displayedCerts.map((cert) => (
-          /* key uses the English title string to ensure uniqueness and prevent Object errors */
-          <div key={cert.title.Anglais} className="group h-[320px] [perspective:1000px]">
+          <div 
+            key={cert.title.Anglais} 
+            className="group h-[320px] [perspective:1000px] cursor-pointer"
+            onClick={() => handleCardClick(cert.title.Anglais)}
+          >
             
-            {/* Inner Flipper */}
-            <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+            {/* Inner Flipper - Added logic to rotate on click (mobile) OR hover (desktop) */}
+            <div className={`relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] 
+              group-hover:[transform:rotateY(180deg)] 
+              ${flippedId === cert.title.Anglais ? '[transform:rotateY(180deg)]' : ''}`}>
               
               {/* FRONT SIDE */}
               <div className="absolute inset-0 h-full w-full rounded-3xl bg-white dark:bg-slate-900/50 p-8 border border-slate-100 dark:border-slate-800 shadow-sm [backface-visibility:hidden] flex flex-col">
@@ -83,7 +94,7 @@ export default function CertificatesSection({ data }) {
                 </p>
               </div>
 
-              {/* BACK SIDE (Certificate Image) */}
+              {/* BACK SIDE */}
               <div className="absolute inset-0 h-full w-full rounded-3xl bg-white dark:bg-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-hidden border border-slate-100 dark:border-slate-800 shadow-xl">
                 <img 
                   src={cert.image} 

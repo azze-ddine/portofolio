@@ -87,7 +87,7 @@ export default function HeroSection() {
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight flex items-center justify-center md:justify-start">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight flex items-center justify-center md:justify-start break-words whitespace-normal text-center md:text-left">
                   <span className="relative overflow-hidden whitespace-nowrap border-r-4 border-cyan-500 pr-2 animate-typewriter">
                     Azzeddine SAF<span className="text-cyan-500">.</span>
                   </span>
