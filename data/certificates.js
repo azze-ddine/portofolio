@@ -140,6 +140,6 @@ export const certificates = [
       Anglais: "Certified in Java SE 21 development and best practices.",
       Français: "Certifié en développement Java SE 21 et meilleures pratiques."
     },
-    image: "/projects/certifs/java21.png"
+    image: "/projects/certifs/OCP 21.png"
   }
 ];
